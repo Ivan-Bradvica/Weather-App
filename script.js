@@ -19,17 +19,24 @@ let weather = {
     displayWeather: function (data) {
       const { name } = data;
       const { icon, description } = data.weather[0];
-      const { temp, humidity } = data.main;
+      const { temp, humidity,feels_like } = data.main;
       const { speed } = data.wind;
+      const { country,sunrise } = data.sys;
+
       document.querySelector(".city").innerText = "Weather in " + name;
       document.querySelector(".icon").src =
         "https://openweathermap.org/img/wn/" + icon + ".png";
+
+      
       document.querySelector(".description").innerText = description;
-      document.querySelector(".temp").innerText = temp + "°C";
+      document.querySelector(".temp").innerText ="Current temperature: "+ temp + " °C";
       document.querySelector(".humidity").innerText =
         "Humidity: " + humidity + "%";
+        document.querySelector(".feels_like").innerText =
+        "Feels like: " + feels_like + "°C";
       document.querySelector(".wind").innerText =
         "Wind speed: " + speed + " km/h";
+      document.querySelector(".country").innerText = "Country: "+country;
 
      
       document.querySelector(".weather").classList.remove("loading");
@@ -53,3 +60,4 @@ let weather = {
       }
     });
   
+
